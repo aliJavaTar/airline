@@ -1,6 +1,7 @@
-package repository.base;
+package repository.base.impl;
 
 import entity.base.BaseEntity;
+import repository.base.BaseRepository;
 
 import javax.persistence.EntityManager;
 import java.io.Serializable;
