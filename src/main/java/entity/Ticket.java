@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 import static entity.Ticket.TABLE_NAME;
@@ -30,9 +29,9 @@ public class Ticket extends BaseEntity<Long> {
     @Column(name = PRICE, nullable = false)
     private int price;
     @Column(name = DEPARTURE_DATE, nullable = false)
-    private Date departureDate;
+    private LocalDateTime departureDate;
     @Column(name = RETURN_DATE)
-    private Date returnDate;
+    private LocalDateTime returnDate;
     @Column(name = BEGINNING, nullable = false)
     private String beginning;
     @Column(name = GOAL, nullable = false)
@@ -45,7 +44,7 @@ public class Ticket extends BaseEntity<Long> {
     public Ticket() {
     }
 
-    public Ticket(LocalDateTime createdAt, int price, Date departureDate, Date returnDate,
+    public Ticket(LocalDateTime createdAt, int price, LocalDateTime departureDate, LocalDateTime returnDate,
                   String beginning, String goal, String flightClass, int flightNumber) {
         this.createdAt = createdAt;
         this.price = price;
@@ -80,19 +79,19 @@ public class Ticket extends BaseEntity<Long> {
         this.price = price;
     }
 
-    public Date getDepartureDate() {
+    public LocalDateTime getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Date departureDate) {
+    public void setDepartureDate(LocalDateTime departureDate) {
         this.departureDate = departureDate;
     }
 
-    public Date getReturnDate() {
+    public LocalDateTime getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(Date returnDate) {
+    public void setReturnDate(LocalDateTime returnDate) {
         this.returnDate = returnDate;
     }
 

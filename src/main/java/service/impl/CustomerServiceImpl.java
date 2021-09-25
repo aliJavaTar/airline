@@ -74,18 +74,15 @@ public class CustomerServiceImpl extends BaseServiceImpl<Customer, Long, Custome
         int choice = input.nextInt();
         switch (choice) {
             case 1:
-                //ticket
-               // twitService.addTwit(customer);
+               buyTicket(customer);
                 break;
             case 2:
                 menuEdit(customer);
                 break;
-
         }
     }
 
     private void userActive(Customer customer) {
-        //show ticket
         menuUserActive();
         choiceMenuAfterLogin(customer);
         System.out.println("do want Exit? (enter 1)");
@@ -112,8 +109,12 @@ public class CustomerServiceImpl extends BaseServiceImpl<Customer, Long, Custome
                 deleteAccount(customer);
                 System.exit(0);
                 break;
+
         }
         userActive(customer);
+    }
+
+    private void buyTicket(Customer customer) {
     }
 
     private void menuUserActive() {
@@ -194,7 +195,8 @@ public class CustomerServiceImpl extends BaseServiceImpl<Customer, Long, Custome
                     customer.setPassword(password);
                 else System.out.println("password false");
             }
-            if (!cheekEmail) {
+            if (!cheekEmail)
+            {
                 System.out.println("please enter your email address: ");
                 String email = input.next();
                 cheekEmail = CheekEmail(email);
@@ -207,7 +209,30 @@ public class CustomerServiceImpl extends BaseServiceImpl<Customer, Long, Custome
             else System.out.println("try again.............");
 
         } while (!cheek);
+        getDetailsInformation(customer);
         return customer;
+    }
+
+    private void getDetailsInformation(Customer customer) {
+        System.out.println("enter firstName ");
+        String firstName = input.next();
+        customer.setFirstName(firstName);
+
+        System.out.println("enter lastName ");
+        String lastName = input.next();
+        customer.setLastName(lastName);
+
+        System.out.println("enter fatherName ");
+        String fatherName = input.next();
+        customer.setFatherName(fatherName);
+
+        System.out.println("enter nationalCode ");
+        String nationalCode = input.next();
+        customer.setNationalCode(nationalCode);
+
+        System.out.println("enter phoneNumber ");
+        String phoneNumber = input.next();
+        customer.setPhoneNumber(phoneNumber);
     }
 
     private void systemMenu() {
@@ -223,7 +248,7 @@ public class CustomerServiceImpl extends BaseServiceImpl<Customer, Long, Custome
     }
 
     private boolean cheekUserName(String text) {
-        String regex = "^[a-zA-Z]([._-](?![._-])|[a-zA-Z0-9]){3,16}[a-zA-Z0-9]$";
+        String regex = "^[a-zA-Z]([._-](?![._-])|[a-zA-Z0-9]){1,16}[a-zA-Z0-9]$";
         boolean isTrue = Pattern.matches(regex, text);
         return isTrue;
     }
