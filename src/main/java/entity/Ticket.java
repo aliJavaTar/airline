@@ -4,6 +4,7 @@ import entity.base.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import java.sql.Date;
@@ -55,6 +56,13 @@ public class Ticket extends BaseEntity<Long> {
         this.flightClass = flightClass;
         this.flightNumber = flightNumber;
     }
+
+
+    @ManyToOne
+    private Airline airline;
+
+    @ManyToOne
+    private Customer customer;
 
     public LocalDateTime getCreatedAt() {
         return createdAt;

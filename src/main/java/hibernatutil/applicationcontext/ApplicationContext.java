@@ -13,9 +13,8 @@ import service.TicketService;
 import service.impl.AirlineServiceImpl;
 import service.impl.CustomerServiceImpl;
 import service.impl.TicketServiceImpl;
-
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
+
 
 public class ApplicationContext {
 

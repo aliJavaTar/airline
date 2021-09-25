@@ -1,8 +1,8 @@
 package entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+
+import java.util.List;
 
 import static entity.Customer.TABLE_NAME;
 
@@ -42,6 +42,10 @@ public class Customer extends Information {
         this.nationalCode = nationalCode;
     }
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
+    private List<Ticket> tickets;
+
+
     public String getFirstName() {
         return firstName;
     }
@@ -72,5 +76,13 @@ public class Customer extends Information {
 
     public void setNationalCode(String nationalCode) {
         this.nationalCode = nationalCode;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }
